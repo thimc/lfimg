@@ -25,12 +25,22 @@ Besides lf and Überzug you will need to install the following packages:
 
 
 ## Installation
-1. Extract the following files: **image**, **lfrun**, **preview** to **~/.config/lf/**.
-2. Edit your **~/.config/lf/lfrc** file and add the following line:
+
+In the project directory you can run the following command:
+
+```
+make install
+```
+
+To install this to your system, or you can do it manually by following the guide below:
+
+1. Extract the following files: **image**, **preview** to **~/.config/lf/**.
+2. Extract **lfrun** to a directory that is in your $PATH variable (such as /usr/bin).
+3. Edit your **~/.config/lf/lfrc** file and add the following line:
 ```
 set previewer ~/.config/lf/preview
 ```
-3. In order to launch lf with image preview support from now on, you will need to use the supplied **lfrun** script.
+4. In order to launch lf with image preview support from now on, you will need to use the supplied **lfrun** script.
 
 I recommend that you make an alias in your shell that points to lfrun.
 
