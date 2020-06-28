@@ -22,7 +22,7 @@ Besides lf and Überzug you will need to install the following packages:
 * ImageMagick
 * poppler
 * epub-thumbnailer
-
+* bc
 
 ## Installation
 
