@@ -13,6 +13,13 @@ main() {
 			;;
 		"*") echo "Unknown command: '$1', '$2'" ;;
 	esac
+
+    if [ $2 -ne `cat $LAST_PIC_FILE` ] ; then
+        echo $2 > $LAST_PIC_FILE
+        lf -remote "send reload"
+    fi
+
 }
+
 main "$@"
 
