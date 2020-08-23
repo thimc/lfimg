@@ -6,8 +6,7 @@ This set of scripts is used along lf to generate image previews and much like [v
 
 
 # Known issues
-1. If an image has already been previewed once the preview pane won't display the image temporarily. In order to solve this the UI needs to be reloaded. (using the 'reload' command).
-2. The image preview will not disappear when changing the current working directory. This is due to the preview script only being run when hovering over files and not directories.
+1. The image preview will not disappear when changing the current working directory. This is due to the preview script only being run when hovering over files and not directories.
 
 
 ## Prerequisites
