@@ -12,12 +12,9 @@ main() {
 				[path]="$2") > "$FIFO_UEBERZUG"
 
             lf -remote "send reload"
-
             ;;
 		"*") echo "Unknown command: '$1', '$2'" ;;
 	esac
-
-
 }
 
 main "$@"
