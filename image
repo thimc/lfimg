@@ -10,9 +10,14 @@ main() {
 			declare -p -A cmd=([action]=add [identifier]="$ID_PREVIEW" \
 				[x]="$3" [y]="$4" [max_width]="$5" [max_height]="$6" \
 				[path]="$2") > "$FIFO_UEBERZUG"
-			;;
+
+            lf -remote "send reload"
+
+            ;;
 		"*") echo "Unknown command: '$1', '$2'" ;;
 	esac
+
+
 }
 main "$@"
 
