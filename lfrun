@@ -3,7 +3,7 @@ export FIFO_UEBERZUG="/tmp/lf-ueberzug-${PPID}"
 
 function cleanup {
 	rm "$FIFO_UEBERZUG" 2>/dev/null
-	pkill -P $$
+	pkill -KILL -P $$
 }
 
 mkfifo "$FIFO_UEBERZUG"
