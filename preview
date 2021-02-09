@@ -34,7 +34,7 @@ case "$1" in
 		epub-thumbnailer "$1" "$CACHE" 1024
 		$HOME/.config/lf/image draw "$CACHE" $num 1 $numb $numc
 		;;
-	*.bmp|*.jpg|*.jpeg|*.png|*.xpm)
+	*.bmp|*.jpg|*.jpeg|*.png|*.xpm|*.webp)
 		$HOME/.config/lf/image draw "$1" $num 1 $numb $numc
 		;;
 	*.wav|*.mp3|*.flac|*.m4a|*.wma|*.ape|*.ac3|*.og[agx]|*.spx|*.opus|*.as[fx]|*.flac) exiftool "$1";;
@@ -45,4 +45,3 @@ case "$1" in
 		;;
 	*) highlight --out-format ansi "$1" || cat "$1";;
 esac
-
