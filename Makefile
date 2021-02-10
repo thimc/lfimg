@@ -2,7 +2,9 @@
 install:
 	sudo cp ./lfrun /usr/bin/lfrun
 	sudo chmod +x /usr/bin/lfrun
-	mkdir ~/.config/lf
+	@if [[ ! -d ~/.config/lf/ ]]; then\
+		mkdir ~/.config/lf ;\
+	fi
 	cp ./image ~/.config/lf/image
 	chmod +x ~/.config/lf/image
 	cp ./preview ~/.config/lf/preview
