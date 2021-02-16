@@ -4,6 +4,8 @@
 
 This set of scripts is used along lf to generate image previews and much like [vifmimg](https://github.com/cirala/vifmimg) it is able to handle image, video and ebook previews.
 
+When a SSH-connection has been established, [chafa](https://github.com/hpjansson/chafa) will be used instead.
+
 
 # Known issues
 1. If an image has already been previewed once the preview pane won't display the image temporarily. In order to solve this the UI needs to be reloaded. (using the 'reload' command).
@@ -23,6 +25,7 @@ Besides lf and Überzug you will need to install the following packages:
 * poppler
 * epub-thumbnailer
 * bc
+* chafa (optional - for image preview over SSH)
 
 ## Installation
 

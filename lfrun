@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
-export FIFO_UEBERZUG="/tmp/lf-ueberzug-${PPID}"
 
-function cleanup {
+cleanup() {
 	rm "$FIFO_UEBERZUG" 2>/dev/null
 	pkill -KILL -P $$
 }
 
-mkfifo "$FIFO_UEBERZUG"
-trap cleanup EXIT
-tail --follow "$FIFO_UEBERZUG" | ueberzug layer --silent --parser bash &
-
-lf $@
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+	lf $@
+else
+	export FIFO_UEBERZUG="/tmp/lf-ueberzug-${PPID}"
+	mkfifo "$FIFO_UEBERZUG"
+	trap cleanup EXIT
+	tail --follow "$FIFO_UEBERZUG" | ueberzug layer --silent --parser bash &
+	lf $@
+fi

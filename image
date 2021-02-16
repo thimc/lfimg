@@ -14,5 +14,8 @@ main() {
 		"*") echo "Unknown command: '$1', '$2'" ;;
 	esac
 }
-main "$@"
-
+if [ ! -z $FIFO_UEBERZUG ]; then
+	main "$@"
+else
+	chafa "$2" -s ${5}x${6}
+fi
