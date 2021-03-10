@@ -5,8 +5,6 @@ num=$(printf "%0.f\n" "`echo "$(tput cols) / 2" | bc`")
 numb=$(printf "%0.f\n" "`echo "$(tput cols) - $num - 1" | bc`")
 numc=$(printf "%0.f\n" "`echo "$(tput lines) - 2" | bc`")
 
-readonly ID_PREVIEW="lf-preview"
-
 image() {
 	if [ ! -z "$DISPLAY" ]; then
 		declare -p -A cmd=([action]=add [identifier]="PREVIEW" \
