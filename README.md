@@ -7,10 +7,8 @@ This set of scripts is used along lf to generate image previews and much like [v
 When a SSH-connection has been established, [chafa](https://github.com/hpjansson/chafa) will be used instead.
 
 
-# Known issues
-1. If an image has already been previewed once the preview pane won't display the image temporarily. In order to solve this the UI needs to be reloaded. (using the 'reload' command).
-2. The image preview will not disappear when changing the current working directory. This is due to the preview script only being run when hovering over files and not directories.
-
+# To be added
+* Cached images
 
 ## Prerequisites
 This script assumes that the preview pane is using one third of the window which should be the default behaviour for lf, but f you've changed this you will need to add the following line in your **~/.config/lf/lfrc** file:
@@ -38,11 +36,12 @@ make install
 
 To install this to your system, or you can do it manually by following the guide below:
 
-1. Extract the following files: **image**, **preview** to **~/.config/lf/**.
+1. Extract the following files: **cleaner**, **preview** to **~/.config/lf/**.
 2. Extract **lfrun** to a directory that is in your $PATH variable (such as /usr/bin).
-3. Edit your **~/.config/lf/lfrc** file and add the following line:
+3. Edit your **~/.config/lf/lfrc** file and add the following lines:
 ```
 set previewer ~/.config/lf/preview
+set cleaner ~/.config/lf/cleaner
 ```
 4. In order to launch lf with image preview support from now on, you will need to use the supplied **lfrun** script.
 
