@@ -7,9 +7,6 @@ This set of scripts is used along lf to generate image previews and much like [v
 When a SSH-connection has been established, [chafa](https://github.com/hpjansson/chafa) will be used instead.
 
 
-# To be added
-* Cached images
-
 ## Prerequisites
 This script assumes that the preview pane is using one third of the window which should be the default behaviour for lf, but f you've changed this you will need to add the following line in your **~/.config/lf/lfrc** file:
 ```
@@ -23,9 +20,17 @@ Besides lf and Überzug you will need to install the following packages:
 * poppler
 * epub-thumbnailer
 * bc
-* bat (color highlight for text files)
+* bat (optional - color highlight for text files)
 * chafa (optional - for image preview over SSH)
-
+* unzip (optional - for .zip and .jar files)
+* 7z (optional - for .7z files)
+* unrar (optional - for .rar files)
+* catdoc (optional - for .doc files)
+* docx2txt (optional - for .docx files)
+* odt2txt (optional - for .odt and *.ods files)
+* exiftool (optional - for music files)
+* iso-info (optional - for .iso files)
+* transmission (optional - for .torrent files)
 ## Installation
 
 In the project directory you can run the following command:
