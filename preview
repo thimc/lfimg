@@ -10,11 +10,13 @@ image() {
 		declare -p -A cmd=([action]=add [identifier]="PREVIEW" \
 			[x]="$2" [y]="$3" [max_width]="$4" [max_height]="$5" \
 			[path]="$1") > "$FIFO_UEBERZUG"
+		exit 1
 	else
 		chafa "$1" -s ${4}x${5}
 	fi
-	exit 1
 }
+
+CACHE="$HOME/.cache/lf/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$(readlink -f "$1")" | sha256sum | awk '{print $1}'))"
 
 case "$1" in
 	*.tgz|*.tar.gz) tar tzf "$1" ;;
@@ -32,33 +34,29 @@ case "$1" in
 	*.doc) catdoc "$1" ;;
 	*.docx) docx2txt "$1" - ;;
 	*.csv) cat "$1" | sed s/,/\\n/g ;;
+	*.wav|*.mp3|*.flac|*.m4a|*.wma|*.ape|*.ac3|*.og[agx]|*.spx|*.opus|*.as[fx]|*.flac)
+		exiftool "$1"
+		;;
 	*.pdf)
-		CACHE=$(mktemp $HOME/.cache/lf/thumbcache.XXXXX)
-		pdftoppm -png -f 1 -singlefile "$1" "$CACHE"
-
-		image "$CACHE.png" $num 1 $numb $numc
+		[ ! -f "${CACHE}.jpg" ] && \
+			pdftoppm -jpeg -f 1 -singlefile "$1" "$CACHE"
+		image "${CACHE}.jpg" $num 1 $numb $numc
 		;;
 	*.epub)
-		CACHE=$(mktemp $HOME/.cache/lf/thumbcache.XXXXX)
-		epub-thumbnailer "$1" "$CACHE" 1024
+		[ ! -f "$CACHE" ] && \
+			epub-thumbnailer "$1" "$CACHE" 1024
 		image "$CACHE" $num 1 $numb $numc
+		;;
+	*.avi|*.mp4|*.wmv|*.dat|*.3gp|*.ogv|*.mkv|*.mpg|*.mpeg|*.vob|*.fl[icv]|*.m2v|*.mov|*.webm|*.ts|*.mts|*.m4v|*.r[am]|*.qt|*.divx)
+		[ ! -f "${CACHE}.jpg" ] && \
+			ffmpegthumbnailer -i "$1" -o "${CACHE}.jpg" -s 0 -q 5
+		image "${CACHE}.jpg" $num 1 $numb $numc
 		;;
 	*.bmp|*.jpg|*.jpeg|*.png|*.xpm|*.webp)
 		image "$1" $num 1 $numb $numc
 		;;
-	*.wav|*.mp3|*.flac|*.m4a|*.wma|*.ape|*.ac3|*.og[agx]|*.spx|*.opus|*.as[fx]|*.flac) exiftool "$1";;
-	*.avi|*.mp4|*.wmv|*.dat|*.3gp|*.ogv|*.mkv|*.mpg|*.mpeg|*.vob|*.fl[icv]|*.m2v|*.mov|*.webm|*.ts|*.mts|*.m4v|*.r[am]|*.qt|*.divx)
-		CACHE=$(mktemp $HOME/.cache/lf/thumbcache.XXXXX)
-		ffmpegthumbnailer -i "$1" -o "$CACHE" -s 0
-		image "$CACHE" $num 1 $numb $numc
-		;;
 	*)
-		if [ -f /usr/bin/bat ]; then
-			bat --color=always --style=plain --pager=never "$1"
-		else
-			cat "$1"
-		fi
+		[ -f /usr/bin/bat ] && bat --color=auto --style=plain --pager=never "$1" || cat "$1"
 		;;
-
 esac
-
+exit 0
