@@ -1,4 +1,3 @@
-
 install:
 	sudo cp ./lfrun /usr/bin/lfrun
 	sudo chmod +x /usr/bin/lfrun
@@ -15,9 +14,14 @@ install:
 	@if [ -z "$(sed -n '/set cleaner/p' ~/.config/lf/lfrc)" ]; then\
 		sed -i '1 i\set cleaner ~/.config/lf/cleaner' ~/.config/lf/lfrc ;\
 	fi
+	@if [ -z "$(sed -n '/set ratios/p' ~/.config/lf/lfrc)" ]; then\
+		sed -i '1 i\set ratios 1:2:3' ~/.config/lf/lfrc ;\
+	fi
+
 uninstall:
 	sudo rm /usr/bin/lfrun
 	sudo rm ~/.config/lf/cleaner ~/.config/lf/preview
 	sed -i '/set previewer/d' ~/.config/lf/lfrc
 	sed -i '/set cleaner/d' ~/.config/lf/lfrc
+	sed -i '/set ratios/d' ~/.config/lf/lfrc
 
