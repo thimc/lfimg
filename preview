@@ -33,7 +33,9 @@ case "$1" in
 	*odt,*.ods,*.odp,*.sxw) odt2txt "$1" ;;
 	*.doc) catdoc "$1" ;;
 	*.docx) docx2txt "$1" - ;;
-	*.csv) cat "$1" | sed s/,/\\n/g ;;
+	*.csv)
+		[ -f /usr/bin/bat ] && bat --color=auto --style=plain --pager=never "$1" | sed s/,/\\n/g || cat "$1" | sed s/,/\\n/g
+		 ;;
 	*.wav|*.mp3|*.flac|*.m4a|*.wma|*.ape|*.ac3|*.og[agx]|*.spx|*.opus|*.as[fx]|*.flac)
 		exiftool "$1"
 		;;
