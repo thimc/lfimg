@@ -58,7 +58,7 @@ case "$1" in
 		image "$1" $num 1 $numb $numc
 		;;
 	*)
-		[ -f /usr/bin/bat ] && bat --color=auto --style=plain --pager=never "$1" || cat "$1"
+		[ -f /usr/bin/bat ] && bat --color=always --style=plain --pager=never "$1" || cat "$1"
 		;;
 esac
 exit 0
