@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # Calculate where the image should be placed on the screen.
 num=$(printf "%0.f\n" "`echo "$(tput cols) / 2" | bc`")
