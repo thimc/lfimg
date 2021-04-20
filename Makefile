@@ -1,7 +1,7 @@
 install:
 	sudo cp ./lfrun /usr/bin/lfrun
 	sudo chmod +x /usr/bin/lfrun
-	@if [[ ! -d ~/.config/lf/ ]]; then\
+	@if [ ! -d ~/.config/lf/ ]; then\
 		mkdir ~/.config/lf ;\
 	fi
 	cp ./cleaner ~/.config/lf/cleaner
