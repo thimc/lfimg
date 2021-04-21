@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 # Calculate where the image should be placed on the screen.
-num="$(printf "%0.f\n" "$(echo "$(tput cols) / 2" | bc)")"
-numb="$(printf "%0.f\n" "$(echo "$(tput cols) - $num - 1" | bc)")"
-numc="$(printf "%0.f\n" "$(echo "$(tput lines) - 2" | bc)")"
+num="$(printf "%0.f\n" "$(printf "%s\n" "$(tput cols) / 2" | bc)")"
+numb="$(printf "%0.f\n" "$(printf "%s\n" "$(tput cols) - $num - 1" | bc)")"
+numc="$(printf "%0.f\n" "$(printf "%s\n" "$(tput lines) - 2" | bc)")"
 
 image() {
 	if [ -n "$DISPLAY" ]; then
@@ -18,7 +18,7 @@ image() {
 
 CACHE="$HOME/.cache/lf/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$(readlink -f "$1")" | sha256sum | awk '{print $1}'))"
 
-case "$(echo "$1" | awk '{print tolower($0)}')" in
+case "$(printf "%s\n" "$1" | awk '{print tolower($0)}')" in
 	*.tgz|*.tar.gz) tar tzf "$1" ;;
 	*.tar.bz2|*.tbz2) tar tjf "$1" ;;
 	*.tar.txz|*.txz) xz --list "$1" ;;
@@ -34,13 +34,13 @@ case "$(echo "$1" | awk '{print tolower($0)}')" in
 	*.doc) catdoc "$1" ;;
 	*.docx) docx2txt "$1" - ;;
 	*.csv)
-		if [ -f /usr/bin/bat ]
-        then
-            bat --color=auto --style=plain --pager=never "$1" | 'sed s/,/\n/g'
-        else
-            sed 's/,/\n/g' "$1"
-        fi
-		 ;;
+		if command -v bat > /dev/null 2>&1
+		then
+			bat --color=auto --style=plain --pager=never "$1" | 'sed s/,/\n/g'
+		else
+			sed 's/,/\n/g' "$1"
+		fi
+		;;
 	*.wav|*.mp3|*.flac|*.m4a|*.wma|*.ape|*.ac3|*.og[agx]|*.spx|*.opus|*.as[fx])
 		exiftool "$1"
 		;;
@@ -59,16 +59,16 @@ case "$(echo "$1" | awk '{print tolower($0)}')" in
 			ffmpegthumbnailer -i "$1" -o "${CACHE}.jpg" -s 0 -q 5
 		image "${CACHE}.jpg" "$num" 1 "$numb" "$numc"
 		;;
-	*.bmp|*.jpg|*.jpeg|*.png|*.xpm|*.webp)
+	*.bmp|*.jpg|*.jpeg|*.png|*.xpm|*.webp|*.gif)
 		image "$1" "$num" 1 "$numb" "$numc"
 		;;
 	*)
-		if [ -f /usr/bin/bat ]
-        then
-            bat --color=always --style=plain --pager=never "$1"
-        else
-            cat "$1"
-        fi
+		if command -v bat > /dev/null 2>&1
+		then
+			bat --color=always --style=plain --pager=never "$1"
+		else
+			cat "$1"
+		fi
 		;;
 esac
 exit 0
