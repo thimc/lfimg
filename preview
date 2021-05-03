@@ -16,6 +16,17 @@ image() {
 	fi
 }
 
+batorcat() {
+	file="$1"
+	shift
+	if command -v bat > /dev/null 2>&1
+	then
+		bat --color=always --style=plain --pager=never "$file" "$@"
+	else
+		cat "$1"
+	fi
+}
+
 CACHE="$HOME/.cache/lf/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$(readlink -f "$1")" | sha256sum | awk '{print $1}'))"
 
 case "$(printf "%s\n" "$1" | awk '{print tolower($0)}')" in
@@ -55,12 +66,7 @@ case "$(printf "%s\n" "$1" | awk '{print tolower($0)}')" in
 		image "$1" "$num" 1 "$numb" "$numc"
 		;;
 	*)
-		if command -v bat > /dev/null 2>&1
-		then
-			bat --color=always --style=plain --pager=never "$1"
-		else
-			cat "$1"
-		fi
+		batorcat "$1"
 		;;
 esac
 exit 0
