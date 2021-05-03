@@ -28,6 +28,7 @@ Besides lf and Überzug you will need to install the following packages:
 * catdoc (optional - for .doc files)
 * docx2txt (optional - for .docx files)
 * odt2txt (optional - for .odt and *.ods files)
+* gnumeric (optional - for .xls and .xlsx files)
 * exiftool (optional - for music files)
 * iso-info (optional - for .iso files)
 * transmission (optional - for .torrent files)
