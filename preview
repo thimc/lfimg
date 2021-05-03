@@ -68,6 +68,9 @@ case "$(printf "%s\n" "$1" | awk '{print tolower($0)}')" in
 	*.bmp|*.jpg|*.jpeg|*.png|*.xpm|*.webp|*.gif)
 		image "$1" "$num" 1 "$numb" "$numc"
 		;;
+	*.ino)
+		batorcat --language=cpp "$1"
+		;;
 	*)
 		batorcat "$1"
 		;;
