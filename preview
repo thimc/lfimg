@@ -30,7 +30,7 @@ case "$(printf "%s\n" "$1" | awk '{print tolower($0)}')" in
 	*.o) nm "$1" | less ;;
 	*.torrent) transmission-show "$1" ;;
 	*.iso) iso-info --no-header -l "$1" ;;
-	*odt,*.ods,*.odp,*.sxw) odt2txt "$1" ;;
+	*.odt|*.ods|*.odp|*.sxw) odt2txt "$1" ;;
 	*.doc) catdoc "$1" ;;
 	*.docx) docx2txt "$1" - ;;
 	*.wav|*.mp3|*.flac|*.m4a|*.wma|*.ape|*.ac3|*.og[agx]|*.spx|*.opus|*.as[fx])
