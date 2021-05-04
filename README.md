@@ -19,7 +19,6 @@ Besides lf and Überzug you will need to install the following packages:
 * ImageMagick
 * poppler
 * epub-thumbnailer
-* bc
 * bat (optional - color highlight for text files)
 * chafa (optional - for image preview over SSH)
 * unzip (optional - for .zip and .jar files)
