@@ -47,7 +47,7 @@ case "$(printf "%s\n" "$1" | awk '{print tolower($0)}')" in
 	*.xls|*.xlsx) 
 		ssconvert --export-type=Gnumeric_stf:stf_csv "$1" "fd://1" | batorcat --language=csv
 		;;
-	*.wav|*.mp3|*.flac|*.m4a|*.wma|*.ape|*.ac3|*.og[agx]|*.spx|*.opus|*.as[fx])
+	*.wav|*.mp3|*.flac|*.m4a|*.wma|*.ape|*.ac3|*.og[agx]|*.spx|*.opus|*.as[fx]|*.mka)
 		exiftool "$1"
 		;;
 	*.pdf)
