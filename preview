@@ -38,7 +38,7 @@ case "$(printf "%s\n" "$1" | awk '{print tolower($0)}')" in
 	*.rar) unrar l "$1" ;;
 	*.7z) 7z l "$1" ;;
 	*.[1-8]) man "$1" | col -b ;;
-	*.o) nm "$1" | less ;;
+	*.o) nm "$1";;
 	*.torrent) transmission-show "$1" ;;
 	*.iso) iso-info --no-header -l "$1" ;;
 	*.odt|*.ods|*.odp|*.sxw) odt2txt "$1" ;;
