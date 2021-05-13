@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 if [ -n "$FIFO_UEBERZUG" ]; then
-	declare -p -A cmd=([action]=remove [identifier]="PREVIEW") > "$FIFO_UEBERZUG"
+	printf '{"action": "remove", "identifier": "PREVIEW"}\n' > "$FIFO_UEBERZUG"
 fi
