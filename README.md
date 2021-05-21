@@ -8,10 +8,6 @@ When a SSH-connection has been established, [chafa](https://github.com/hpjansson
 
 
 ## Prerequisites
-This script assumes that the preview pane is using one third of the window which should be the default behaviour for lf, but f you've changed this you will need to add the following line in your **~/.config/lf/lfrc** file:
-```
-set ratios 1:2:3
-```
 
 Besides lf and Überzug you will need to install the following packages:
 
