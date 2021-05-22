@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 set -e
 
 cleanup() {
@@ -12,7 +12,7 @@ else
 	[ ! -d "$HOME/.cache/lf" ] && mkdir --parents "$HOME/.cache/lf"
 	export FIFO_UEBERZUG="$HOME/.cache/lf/ueberzug-$$"
 	mkfifo "$FIFO_UEBERZUG"
-	ueberzug layer -s <"$FIFO_UEBERZUG" -p bash &
+	ueberzug layer -s <"$FIFO_UEBERZUG" -p json &
 	exec 3>"$FIFO_UEBERZUG"
 	trap cleanup EXIT
 	lf "$@" 3>&-
