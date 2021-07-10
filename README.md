@@ -16,7 +16,7 @@ Besides lf and Überzug you will need to install the following packages:
 * poppler
 * epub-thumbnailer
 * bat (optional - color highlight for text files)
-* chafa (optional - for image preview over SSH)
+* chafa (optional - for image preview over SSH or inside Wayland session)
 * unzip (optional - for .zip and .jar files)
 * 7z (optional - for .7z files)
 * unrar (optional - for .rar files)
