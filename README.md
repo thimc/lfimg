@@ -28,6 +28,7 @@ Besides lf and Überzug you will need to install the following packages:
 * exiftool (optional - for music files)
 * iso-info (optional - for .iso files)
 * transmission (optional - for .torrent files)
+* mcomix (optional - for .cbz and .cbr files)
 ## Installation
 
 In the project directory you can run the following command:
