@@ -71,6 +71,11 @@ case "$(printf "%s\n" "$(readlink -f "$1")" | awk '{print tolower($0)}')" in
 	*.bmp|*.jpg|*.jpeg|*.png|*.xpm|*.webp|*.gif|*.jfif)
 		image "$1" "$2" "$3" "$4" "$5"
 		;;
+	*.svg)
+		[ ! -f "${CACHE}.jpg" ] && \
+			rsvg-convert "$1" -o "${CACHE}.jpg"
+		image "${CACHE}.jpg" "$2" "$3" "$4" "$5"
+		;;
 	*.ino)
 		batorcat --language=cpp "$1"
 		;;
