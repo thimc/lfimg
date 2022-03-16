@@ -59,7 +59,7 @@ case "$(printf "%s\n" "$(readlink -f "$1")" | awk '{print tolower($0)}')" in
 		image "$CACHE" "$2" "$3" "$4" "$5"
 		;;
 	*.html)
-		[ ! -f "$CACHE" ] && \ 
+		[ ! -f "$CACHE" ] && \
 			wkhtmltopdf "$1" - | pdftoppm -jpeg -f 1 -singlefile - "$CACHE"
 		image "${CACHE}.jpg" "$2" "$3" "$4" "$5"
 		;;
