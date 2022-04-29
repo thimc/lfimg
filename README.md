@@ -13,6 +13,7 @@ Besides lf and Überzug you will need to install the following packages:
 
 * ffmpegthumbnailer
 * ImageMagick
+* glow
 * poppler
 * epub-thumbnailer
 * wkhtmltopdf
