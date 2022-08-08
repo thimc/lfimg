@@ -37,7 +37,7 @@ case "$(printf "%s\n" "$(readlink -f "$1")" | awk '{print tolower($0)}')" in
 	*.iso) iso-info --no-header -l "$1" ;;
 	*.odt|*.ods|*.odp|*.sxw) odt2txt "$1" ;;
 	*.doc) catdoc "$1" ;;
-	*.docx) docx2txt "$1" - ;;
+	*.docx) docx2txt "$1" ;;
   *.xml|*.html) w3m -dump "$1";;
 	*.xls|*.xlsx)
 		ssconvert --export-type=Gnumeric_stf:stf_csv "$1" "fd://1" | batorcat --language=csv
