@@ -36,7 +36,7 @@ make install
 ```
 
 If you prefer to do it manually you will need to do the following:
-1. Extract the following files: **cleaner**, **preview** to **/.config/lf/**.
+1. Extract the following files: **cleaner**, **preview** to **~/.config/lf/**.
 2. Extract **lfrun** to a directory that is in your $PATH variable (such as
    /usr/bin or ~/.local/bin).
 3. Edit your **lfrc** file and add the following lines:
