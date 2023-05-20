@@ -1,21 +1,20 @@
 # Image preview support for lf (list files) using Überzug
-
 ![image](https://raw.githubusercontent.com/cirala/lfimg/master/screenshot.png)
 
-This set of scripts is used along lf to generate image previews and much like [vifmimg](https://github.com/cirala/vifmimg) it is able to handle image, video and ebook previews.
-
-When a SSH-connection has been established, [chafa](https://github.com/hpjansson/chafa) will be used instead.
-
+lfimg is a repository that contains scripts that are used for generating image
+preview in lf.\
+If you want image preview support for vifm, head on over to
+[vifmimg](https://github.com/cirala/vifmimg).
 
 ## Prerequisites
-
 Besides lf and Überzug you will need to install the following packages:
-
 * ffmpegthumbnailer
 * ImageMagick
 * poppler
 * epub-thumbnailer
 * wkhtmltopdf
+
+The following packages are optional but if installed will provide more functionality to lfimg.
 * bat (optional - color highlight for text files)
 * chafa (optional - for image preview over SSH or inside Wayland session)
 * unzip (optional - for .zip and .jar files)
@@ -29,29 +28,35 @@ Besides lf and Überzug you will need to install the following packages:
 * iso-info (optional - for .iso files)
 * transmission (optional - for .torrent files)
 * mcomix (optional - for .cbz and .cbr files)
+
 ## Installation
-
-In the project directory you can run the following command:
-
+The preferred way of installing lfimg is running make:
 ```
 make install
 ```
 
-To install this to your system, or you can do it manually by following the guide below:
-
-1. Extract the following files: **cleaner**, **preview** to **~/.config/lf/**.
-2. Extract **lfrun** to a directory that is in your $PATH variable (such as /usr/bin).
-3. Edit your **~/.config/lf/lfrc** file and add the following lines:
+If you prefer to do it manually you will need to do the following:
+1. Extract the following files: **cleaner**, **preview** to **/.config/lf/**.
+2. Extract **lfrun** to a directory that is in your $PATH variable (such as
+   /usr/bin or ~/.local/bin).
+3. Edit your **lfrc** file and add the following lines:
 ```
 set previewer ~/.config/lf/preview
 set cleaner ~/.config/lf/cleaner
 ```
-4. In order to launch lf with image preview support from now on, you will need to use the supplied **lfrun** script.
+Make sure to adjust the previewer and cleaner paths to where you put those
+scripts in step 2.
+4. In order to use lfimg you will need to start lf using the **lfrun** script.
 
-I recommend that you make an alias in your shell that points to lfrun.
-
+I recommend that you make an alias in your shell that points to lfrun.\
+If you are using bash, append the following to your **~/.bashrc**:
+```
+alias lf=lfrun
+```
 
 ## Credits
 * [lf](https://github.com/gokcehan/lf/)
 * [Seebye's Überzug](https://github.com/seebye/ueberzug)
-* [Brodie's](https://github.com/BrodieRobertson/) initial preview script which I used as a template for handling the miscellaneous filetypes that this script also handles.
+* [Brodie's](https://github.com/BrodieRobertson/) initial preview script which
+  I used as a template for handling the miscellaneous filetypes that this
+  script also handles.
