@@ -38,6 +38,7 @@ case "$(printf "%s\n" "$(readlink -f "$1")" | awk '{print tolower($0)}')" in
 	*.tar.txz|*.txz) xz --list "$1" ;;
 	*.tar) tar tf "$1" ;;
 	*.zip|*.jar|*.war|*.ear|*.oxt) unzip -l "$1" ;;
+	*.gz) gzip -l "$1" ;;
 	*.rar) unrar l "$1" ;;
 	*.md) glowormdcat "$1";;
 	*.7z) 7z l "$1" ;;
@@ -80,6 +81,6 @@ case "$(printf "%s\n" "$(readlink -f "$1")" | awk '{print tolower($0)}')" in
 		image "${CACHE}.jpg" "$2" "$3" "$4" "$5"
 		;;
 	*.ino) batorcat --language=cpp "$1" ;;
-	*) batorcat "$1" ;;
+	*) file -ibL "$1" | grep -q text && batorcat "$1" || file -Lb "$1" ;;
 esac
 exit 0
