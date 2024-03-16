@@ -27,7 +27,7 @@ The following packages are optional but if installed will provide more functiona
 * exiftool (optional - for music files)
 * iso-info (optional - for .iso files)
 * transmission (optional - for .torrent files)
-* mcomix (optional - for .cbz and .cbr files)
+* [comicthumb](https://codeberg.org/johndovern/comicthumb) (optional - for .cbz and .cbr files)
 
 ## Installation
 The preferred way of installing lfimg is running make:
