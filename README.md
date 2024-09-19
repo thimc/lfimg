@@ -13,7 +13,7 @@ Besides lf and Überzug you will need to install the following packages:
 * poppler
 * epub-thumbnailer
 * wkhtmltopdf
-* file
+* file (pre-installed on most linux flavours; needed for nixOs)
 
 The following packages are optional but if installed will provide more functionality to lfimg.
 * bat (optional - color highlight for text files)
