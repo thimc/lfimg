@@ -10,6 +10,7 @@ If you want image preview support for vifm, head on over to
 Besides lf and Überzug you will need to install the following packages:
 * ffmpegthumbnailer
 * ImageMagick
+* glow
 * poppler
 * epub-thumbnailer
 * wkhtmltopdf
